@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
+from flask_sslify import SSLify
 import datetime
 import requests
 
 app = Flask(__name__)
+sslify = SSLify(app)
 
 
 @app.route('/')
@@ -41,5 +43,5 @@ def show_cite():
 
 
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = False
     app.run(host = 'localhost', port = 5000)
