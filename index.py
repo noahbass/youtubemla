@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import time
 import datetime
 import requests
 
@@ -24,6 +25,10 @@ def show_cite():
     title       = entry['title']['$t']
     date        = entry['published']['$t']
     todays_date = datetime.date.today().strftime('%d %b. %Y')
+
+    # get a friendly date
+    date = time.mktime(datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.000Z').timetuple())
+    date = datetime.datetime.fromtimestamp(int(date)).strftime('%d %b. %Y')
 
     # check if the tweet isn't from a company
     if 'company' not in request.form:
