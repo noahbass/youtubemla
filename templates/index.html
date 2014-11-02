@@ -1,10 +1,10 @@
 {% extends '_layout.html' %}
 
 {% block content %}
-<p class="lead">Generate a citation in the mla format for a YouTube video.</p>
+<p class="lead">Generate a citation in the mla format for a YouTube or Vimeo video.</p>
 
 <form method="POST" action="/citation">
-    <label for="url">YouTube video URL</label>
+    <label for="url">Video URL</label>
     <input type="text" class="form-control" id="url" name="url" placeholder="Paste url here...">
 
     <div class="checkbox">

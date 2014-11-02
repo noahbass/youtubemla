@@ -2,7 +2,14 @@
 
 {% block content %}
 
-<p class="lead">MLA citation for <a href="https://www.youtube.com/watch?v={{ id }}">this</a> video from {{ name }}.</p>
+<p class="lead">MLA citation for
+    {% if service == 'youtube' %}
+        <a href="https://www.youtube.com/watch?v={{ id }}">this</a>
+    {% elif service == 'vimeo' %}
+        <a href="https://vimeo.com/{{ id }}">this</a>
+    {% endif %}
+    video from {{ name }}.
+</p>
 
 <hr>
 
@@ -10,8 +17,8 @@
     {{ name }}.
     "{{ title }}."
     Online video clip.
-    YouTube.
-    <i>YouTube</i>,
+    {{ service }}.
+    <i>{{ service }}</i>,
     {{ date }}.
     Web.
     {{ todays_date }}.
@@ -19,7 +26,13 @@
 
 <hr>
 
-<p><iframe width="1280" height="720" src="//www.youtube.com/embed/{{ id }}?rel=0" frameborder="0" allowfullscreen></iframe></p>
+{% if embed == 'allowed' or 'anywhere' %}
+    {% if service == 'YouTube' %}
+        <p><iframe width="1280" height="720" src="//www.youtube.com/embed/{{ id }}?rel=0" frameborder="0" allowfullscreen></iframe></p>
+    {% elif service == 'Vimeo' %}
+        <p><iframe src="//player.vimeo.com/video/{{ id }}" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen badge="0" color="428BCA"></iframe></p>
+    {% endif %}
+{% endif %}
 {% endblock %}
 
 {% block scripts %}
