@@ -80,7 +80,7 @@ def show_cite():
 if __name__ == '__main__':
     if 'ON_HEROKU' in os.environ:
         app.debug = False
-        app.config['hash'] = os.environ['HASH']
+        app.config['hash'] = os.environ['hash']
     else:
         app.debug = True
         from subprocess import check_output
