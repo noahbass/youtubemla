@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 if 'ON_HEROKU' in os.environ:
     app.debug = False
-    app.config['hash'] = os.environ['hash']
+    app.config['hash'] = os.environ['hash_short']
 else:
     app.debug = True
     from subprocess import check_output
-    app.config['hash'] = check_output(['git', 'rev-parse', 'HEAD']).decode('utf-8')
+    app.config['hash'] = check_output(['git', 'rev-parse', '--short', 'HEAD']).decode('utf-8')
 
 
 @app.route('/')
