@@ -55,7 +55,7 @@ def show_cite():
         date = date.strftime('%d %b. %Y')
     else:
         # the service cannot be found
-        service = 'unknown'
+        service = 'Unknown'
         return 'Cannot find the service from the url. Make sure the url is correct.'
 
     # check if the tweet isn't from a company
